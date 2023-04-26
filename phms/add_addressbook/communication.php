@@ -1,0 +1,192 @@
+<?php
+
+include 'connect.php';
+
+
+if (isset($_POST['name']) && $_POST['name'] != '') {
+  $Name = $_POST['name'];
+  $Mobile = $_POST['mob_no'];
+  $Email = $_POST['email'];
+  $category = $_POST['category'];
+  $Permanant_Address = $_POST['permanent_addr'];
+  $Temporary_Address = $_POST['physical_addr'];
+
+
+
+
+  $sql = "insert into `contacts` (Name, Mobile, Email, category, Permanant_Address,Temporary_Address) values ('$Name', '$Mobile', '$Email', '$category', '$Permanant_Address','$Temporary_Address')";
+
+
+  $result = mysqli_query($con, $sql);
+
+  if (!$result) {
+    die(mysqli_error($con));
+    echo '<script>header("Successfully Added")</script>';
+  } else {
+    unset($_POST);
+    echo '<script>header("Successfully Added")</script>';
+    echo '<script>header("Location:communication.php")</script>';
+  }
+}
+
+
+
+
+
+
+?>
+
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="communication_style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../user/assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="../user/assets/css/medicinestyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../user/assets/css/login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../user/assets/img/favicon.ico">
+
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark1 fixed-top">
+      <a class="navbar-brand" href="#"><b>PHMS</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link " href="../user/dashboard.php">My Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item">
+                  <a class="nav-link" href="register.php">Register</a>
+                </li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page-wrapper">
+      <div class="content" style="text-align: center;">
+
+        <form method="post" action="">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-6 col-xs-offset-1">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <div class="panel-title">
+                        Contact List
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <div class="form">
+                        <div class="row fieldRow">
+                          <div class="col-xs-3">
+                            <label for="name" class="fieldLabel">
+                              Name:
+                            </label>
+                          </div>
+                          <div class="col-xs-9" id="nameContainer">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Add full name " />
+                          </div>
+
+                        </div>
+
+                        <div class="row fieldRow">
+                          <div class="col-xs-3">
+                            <label for="mob_no" class="fieldLabel">
+                              Mobile No :
+                            </label>
+                          </div>
+                          <div class="col-xs-9" id="nameContainer">
+                            <input type="text" id="mob_no" name="mob_no" class="form-control" placeholder="Phone No." />
+                          </div>
+
+                        </div>
+
+                        <div class="row fieldRow">
+                          <div class="col-xs-3">
+                            <label for="email" class="fieldLabel">
+                              Email :
+                            </label>
+                          </div>
+                          <div class="col-xs-9" id="nameContainer">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="email address " />
+                          </div>
+
+                        </div>
+
+                        <!--                 <div class="col-xs-4">
+                  <select id="weight" name="weight" class="form-control">
+                  </select>
+                </div> -->
+
+
+                      </div>
+                      <div class="row fieldRow">
+                        <div class="col-xs-3">
+                          <label for="category" class="fieldLabel">
+                            Category:
+                          </label>
+                        </div>
+                        <div class="col-xs-9" id="nameContainer">
+                          <input type="text" id="category" name="category" class="form-control" placeholder="Relationship with the user " />
+                        </div>
+
+                      </div>
+                      <div class="row fieldRow">
+                        <div class="col-xs-3">
+                          <label for="permanent_addr" class="fieldLabel">
+                            Permanent Address :
+                          </label>
+                        </div>
+                        <div class="col-xs-9" id="nameContainer">
+                          <input type="text" id="permanent_addr" name="permanent_addr" class="form-control" placeholder="permanent address " />
+                        </div>
+
+                      </div>
+                      <div class="row fieldRow">
+                        <div class="col-xs-3">
+                          <label for="physical_addr" class="fieldLabel">
+                            Physical Address :
+                          </label>
+                        </div>
+                        <div class="col-xs-9" id="nameContainer">
+                          <input type="text" id="physical_addr" name="physical_addr" class="form-control" placeholder="Mailing address " />
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="row fieldRow">
+                      <div class="col-xs-10 col-xs-offset-2">
+                        <input type="submit" id="addPersonBtn" name="addMedicineBtn" class="btn btn-primary pull-left " value="Add Contact " />
+                        <input type="reset" id="resetFormBtn" name="resetFormBtn" class="btn btn-danger pull-left" value="Reset All" />
+                        <a href="./viewContacts.php" class="btn btn-primary">View Contacts</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</body>

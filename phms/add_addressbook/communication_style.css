@@ -1,0 +1,44 @@
+.panel {
+  margin-top: 60px;
+}
+
+.fieldLabel {
+  padding-top: 5px;
+}
+
+.fieldRow {
+  margin-bottom: 10px;
+}
+
+.heightUnit {
+  margin-left: -20px;
+}
+
+.units {
+  margin-left: -15px;
+}
+
+thead tr th {
+  text-align: center;
+}
+
+tbody tr td {
+  text-align: center;
+}
+
+input[type='button'] {
+  margin-top: 10px;
+  margin-bottom: -15px;
+}
+
+#nameError {
+  color: red;
+}
+
+/*#nameContainer {
+    height: 34px;
+  }*/
+
+#resetFormBtn {
+  margin-left: 20px;
+}
